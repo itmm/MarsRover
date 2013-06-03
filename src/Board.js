@@ -15,9 +15,10 @@ Board.normalizeOne = function(val, min, size) {
 }
 
 Board.prototype.normalize = function(pos) {
-	pos.x = Board.normalizeOne(pos.x, this.minX, this.width);
-	pos.y = Board.normalizeOne(pos.y, this.minY, this.height);
-	return pos;
+	var result = Clone.clone(pos);
+	result.x = Board.normalizeOne(pos.x, this.minX, this.width);
+	result.y = Board.normalizeOne(pos.y, this.minY, this.height);
+	return result;
 }
 
 Board.toKey = function(pos) {

@@ -1,16 +1,12 @@
 function Rover(board, pos) {
 	this.board = board;
-	this.pos = this.board.normalize(Rover.clonePos(pos));
+	this.pos = this.board.normalize(pos);
 }
 
 Rover.NORTH = 0;
 Rover.EAST = 1;
 Rover.SOUTH = 2;
 Rover.WEST = 3;
-
-Rover.clonePos = function(pos) {
-	return {x: pos.x, y: pos.y, dir: pos.dir};
-}
 
 Rover.sin = function(pos) {
 	return ((pos - 6) * pos + 8) * pos / 3;
@@ -25,7 +21,7 @@ Rover.prototype.move = function(forward) {
 	var dir = this.pos.dir;
 	this.pos.x += factor * Rover.sin(dir);
 	this.pos.y += factor * Rover.cos(dir);
-	this.board.normalize(this.pos);
+	this.pos = this.board.normalize(this.pos);
 }
 
 Rover.prototype.forward = function() {
