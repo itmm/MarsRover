@@ -27,4 +27,8 @@ describe("A Game board", function() {
 		defaults.board.addObstacle({x: 0, y: 0});
 		expect(defaults.board.hasObstacle({x: 0, y: 0})).toBe(true);
 	});
+	it("can have unnormalized obstacles", function() {
+		defaults.board.addObstacle({x: defaults.bounds.maxX + 1, y: defaults.bounds.minY});
+		expect(defaults.board.hasObstacle({x: defaults.bounds.minX, y: defaults.bounds.maxX + 1}));
+	});
 });

@@ -21,14 +21,15 @@ Board.prototype.normalize = function(pos) {
 	return result;
 }
 
-Board.toKey = function(pos) {
+Board.prototype.toKey = function(pos) {
+	pos = this.normalize(pos);
 	return pos.x + ";" + pos.y;
 }
 
 Board.prototype.hasObstacle = function(pos) {
-	return this.obstacles[Board.toKey(pos)] || false;
+	return this.obstacles[this.toKey(pos)] || false;
 }
 
 Board.prototype.addObstacle = function(pos) {
-	this.obstacles[Board.toKey(this.normalize(pos))] = true;
+	this.obstacles[this.toKey(pos)] = true;
 }
