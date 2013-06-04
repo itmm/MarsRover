@@ -12,24 +12,24 @@ Board.normalizeOne = function(val, min, size) {
 	if (val < 0) { val += size; }
 	val += min;
 	return val;
-}
+};
 
 Board.prototype.normalize = function(pos) {
-	var result = Clone.clone(pos);
+	var result = _.clone(pos);
 	result.x = Board.normalizeOne(pos.x, this.minX, this.width);
 	result.y = Board.normalizeOne(pos.y, this.minY, this.height);
 	return result;
-}
+};
 
 Board.prototype.toKey = function(pos) {
 	pos = this.normalize(pos);
 	return pos.x + ";" + pos.y;
-}
+};
 
 Board.prototype.hasObstacle = function(pos) {
 	return this.obstacles[this.toKey(pos)] || false;
-}
+};
 
 Board.prototype.addObstacle = function(pos) {
 	this.obstacles[this.toKey(pos)] = true;
-}
+};

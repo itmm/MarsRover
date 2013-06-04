@@ -19,7 +19,7 @@ describe("A Rovers position", function() {
 		expect(rover.pos).toEqual(newPos);
 	});
 	it("can't be modified from outside", function() {
-		var oldPos = Clone.clone(defaults.pos);
+		var oldPos = _.clone(defaults.pos);
 		defaults.pos.x = 1;
 		expect(defaults.rover.pos).toEqual(oldPos);
 	});

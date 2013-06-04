@@ -18,5 +18,5 @@ describe("A Parser", function() {
 	it("will stop if it is about to run in an obstacle", function() {
 		defaults.board.addObstacle({x: 1, y: 1});
 		expect(defaults.parser.parse("frflb")).toEqual({x: 0, y: 1, dir: Rover.EAST});
-	})
+	});
 });
