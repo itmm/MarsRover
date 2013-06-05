@@ -1,2 +1,2 @@
 - [x] avoid creation of pos objects (only in test cases)
-- [ ] property, if parser found an obstacle
+- [x] property, if parser found an obstacle

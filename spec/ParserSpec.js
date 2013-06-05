@@ -19,4 +19,9 @@ describe("A Parser", function() {
 		defaults.board.addObstacle({x: 1, y: 1});
 		expect(defaults.parser.parse("frflb").pos()).toEqual({x: 0, y: 1, dir: Rover.EAST});
 	});
+	it("can be queried, if an obstacle was found", function() {
+		defaults.board.addObstacle({x: 1, y: 1});
+		defaults.parser.parse("frflb");
+		expect(defaults.parser.foundObstacle).toBe(true);
+	});
 });
