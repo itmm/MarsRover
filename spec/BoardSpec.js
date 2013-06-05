@@ -12,13 +12,15 @@ describe("A Game board", function() {
 	});
 	it("doesn't change values in range", function() {
 		var pos = {x: defaults.bounds.minX, y: defaults.bounds.maxY};
+		defaults.board.normalize(pos);
 		var expected = {x: pos.x, y: pos.y};
-		expect(defaults.board.normalize(pos)).toEqual(expected);
+		expect(pos).toEqual(expected);
 	});
 	it("maps overflow in range", function() {
 		var pos = {x: defaults.bounds.minX - 2, y: defaults.bounds.maxY + 2};
 		var expected = {x: defaults.bounds.maxX - 1, y: defaults.bounds.minY + 1};
-		expect(defaults.board.normalize(pos)).toEqual(expected);
+		defaults.board.normalize(pos);
+		expect(pos).toEqual(expected);
 	});
 	it("has no default abstacles", function() {
 		expect(defaults.board.hasObstacle({x: 0, y: 0})).toBe(false);

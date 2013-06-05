@@ -1,6 +1,9 @@
 function Rover(board, pos) {
 	this.board = board;
-	this.pos = this.board.normalize(pos);
+	this.x = pos.x;
+	this.y = pos.y;
+	this.dir = pos.dir;
+	this.board.normalize(this);
 }
 
 Rover.NORTH = 0;
@@ -8,34 +11,37 @@ Rover.EAST = 1;
 Rover.SOUTH = 2;
 Rover.WEST = 3;
 
-Rover.sin = function(pos) {
-	return ((pos - 6) * pos + 8) * pos / 3;
+Rover.sin = function(x) {
+	return ((x - 6) * x + 8) * x / 3;
 };
 
-Rover.cos = function(pos) {
-	return (((pos - 3) * pos - 1) * pos + 3) / 3;
+Rover.cos = function(x) {
+	return (((x - 3) * x - 1) * x + 3) / 3;
 };
 
-Rover.prototype.move = function(forward) {
+Rover.prototype.pos = function() {
+	return {x: this.x, y: this.y, dir: this.dir};
+}
+Rover.prototype._move = function(forward) {
 	var factor = forward ? 1 : -1;
-	var dir = this.pos.dir;
-	this.pos.x += factor * Rover.sin(dir);
-	this.pos.y += factor * Rover.cos(dir);
-	this.pos = this.board.normalize(this.pos);
+	var dir = this.dir;
+	this.x += factor * Rover.sin(dir);
+	this.y += factor * Rover.cos(dir);
+	this.board.normalize(this);
 };
 
 Rover.prototype.forward = function() {
-	this.move(true);
+	this._move(true);
 };
 
 Rover.prototype.backward = function() {
-	this.move(false);
+	this._move(false);
 };
 
 Rover.prototype.left = function() {
-	this.pos.dir = (this.pos.dir + 3) % 4;
+	this.dir = (this.dir + 3) % 4;
 };
 
 Rover.prototype.right = function() {
-	this.pos.dir = (this.pos.dir + 1) % 4;
+	this.dir = (this.dir + 1) % 4;
 };

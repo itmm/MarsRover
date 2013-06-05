@@ -11,17 +11,12 @@ describe("A Rovers position", function() {
 		defaults = defaultRover();
 	});
 	it("starts at origin position", function() {
-		expect(defaults.rover.pos).toEqual(defaults.pos);
+		expect(defaults.rover.pos()).toEqual(defaults.pos);
 	});
 	it("starts at different position", function() {
 		var newPos = {x: 1, y: -2, dir: Rover.EAST};
 		var rover = new Rover(defaults.board, newPos);
-		expect(rover.pos).toEqual(newPos);
-	});
-	it("can't be modified from outside", function() {
-		var oldPos = _.clone(defaults.pos);
-		defaults.pos.x = 1;
-		expect(defaults.rover.pos).toEqual(oldPos);
+		expect(rover.pos()).toEqual(newPos);
 	});
 });
 
@@ -62,23 +57,23 @@ describe("A Rover", function() {
 	});
 	it("can move forward", function() {
 		defaults.rover.forward();
-		expect(defaults.rover.pos).toEqual({x: 0, y: 1, dir: Rover.NORTH});
+		expect(defaults.rover.pos()).toEqual({x: 0, y: 1, dir: Rover.NORTH});
 	});
 	it("can move backward", function() {
 		defaults.rover.backward();
-		expect(defaults.rover.pos).toEqual({x: 0, y: -1, dir: Rover.NORTH});
+		expect(defaults.rover.pos()).toEqual({x: 0, y: -1, dir: Rover.NORTH});
 	})
 	it("can rotate left", function() {
 		defaults.rover.left();
-		expect(defaults.rover.pos).toEqual({x: 0, y: 0, dir: Rover.WEST});
+		expect(defaults.rover.pos()).toEqual({x: 0, y: 0, dir: Rover.WEST});
 	});
 	it("can rotate right", function() {
 		defaults.rover.right();
-		expect(defaults.rover.pos).toEqual({x: 0, y: 0, dir: Rover.EAST});
+		expect(defaults.rover.pos()).toEqual({x: 0, y: 0, dir: Rover.EAST});
 	});
 	it("can move to left", function() {
 		defaults.rover.left();
 		defaults.rover.forward();
-		expect(defaults.rover.pos).toEqual({x: -1, y: 0, dir: Rover.WEST});
+		expect(defaults.rover.pos()).toEqual({x: -1, y: 0, dir: Rover.WEST});
 	});
 });
