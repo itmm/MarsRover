@@ -1,7 +1,7 @@
 function defaultRover() {
 	var defaults = defaultBoard();
 	defaults.pos = {x: 0, y: 0, dir: Rover.NORTH};
-	defaults.rover = new Rover(defaults.board, defaults.pos);
+	defaults.rover = new Rover(defaults.board, defaults.pos.x, defaults.pos.y, defaults.pos.dir);
 	return defaults;
 }
 
@@ -15,7 +15,7 @@ describe("A Rovers position", function() {
 	});
 	it("starts at different position", function() {
 		var newPos = {x: 1, y: -2, dir: Rover.EAST};
-		var rover = new Rover(defaults.board, newPos);
+		var rover = new Rover(defaults.board, newPos.x, newPos.y, newPos.dir);
 		expect(rover.pos()).toEqual(newPos);
 	});
 });

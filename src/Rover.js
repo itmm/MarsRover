@@ -1,8 +1,8 @@
-function Rover(board, pos) {
+function Rover(board, x, y, dir) {
 	this.board = board;
-	this.x = pos.x;
-	this.y = pos.y;
-	this.dir = pos.dir;
+	this.x = x;
+	this.y = y;
+	this.dir = dir;
 	this.board.normalize(this);
 }
 
