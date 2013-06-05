@@ -21,9 +21,8 @@ Rover.cos = function(x) {
 
 Rover.prototype._move = function(forward) {
 	var factor = forward ? 1 : -1;
-	var dir = this.dir;
-	this.x += factor * Rover.sin(dir);
-	this.y += factor * Rover.cos(dir);
+	this.x += factor * Rover.sin(this.dir);
+	this.y += factor * Rover.cos(this.dir);
 	this.board.normalize(this);
 };
 
