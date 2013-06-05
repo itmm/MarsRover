@@ -19,9 +19,6 @@ Rover.cos = function(x) {
 	return (((x - 3) * x - 1) * x + 3) / 3;
 };
 
-Rover.prototype.pos = function() {
-	return {x: this.x, y: this.y, dir: this.dir};
-}
 Rover.prototype._move = function(forward) {
 	var factor = forward ? 1 : -1;
 	var dir = this.dir;
